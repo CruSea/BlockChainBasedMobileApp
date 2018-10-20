@@ -22,8 +22,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', routes);
 
 
-/* var server = app.listen(3000, function () {
-    console.log("app running on port.", server.address().port);
-}); */
-
 module.exports = app;
