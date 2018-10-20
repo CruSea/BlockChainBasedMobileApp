@@ -12,14 +12,27 @@
  *   },
  */
 
+
+let HDWalletProvider = require("truffle-hdwallet-provider");
+const mnemonic = "mule demand battle eye coach general debate middle wrong this sand trim";
+
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // to customize your Truffle configuration!
     networks: {
-        development: {
-            host: "127.0.0.1",
-            port: 8545,
-            network_id: "*" // Match any network id
+        // development: {
+        //     host: "127.0.0.1",
+        //     port: 8545,
+        //     network_id: "*" // Match any network id
+        // }
+
+
+        rinkeby: {
+            provider: function() {
+                return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/cb9fa4cbacac4c4383bdc9e017647c9e");
+                    },
+            network_id: 1
         }
+
     }
 };
