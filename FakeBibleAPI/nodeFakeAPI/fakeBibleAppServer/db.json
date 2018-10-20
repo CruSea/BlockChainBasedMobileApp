@@ -1,0 +1,46 @@
+{
+    "verses": [
+        {
+            "book_id": "JHN",
+            "book_name": "John",
+            "chapter": 3,
+            "verse": 16,
+            "text": "\nFor God so loved the world, that he gave his one and only Son, that whoever believes in him should not perish, but have eternal life.\n\n"
+        },
+        {
+            "book_id": "ROM",
+            "book_name": "Romans",
+            "chapter": 12,
+            "verse": 1,
+            "text": "Therefore I urge you, brothers, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God, which is your spiritual service.\n"
+        },
+        {
+            "book_id": "ROM",
+            "book_name": "Romans",
+            "chapter": 12,
+            "verse": 2,
+            "text": "Don’t be conformed to this world, but be transformed by the renewing of your mind, so that you may prove what is the good, well-pleasing, and perfect will of God.\n"
+        },
+        {
+            "book_id": "GEN",
+            "book_name": "Genesis",
+            "chapter": 3,
+            "verse": 16,
+            "text": "To the woman he said,\n“I will greatly multiply your pain in childbirth.\nIn pain you will bear children.\nYour desire will be for your husband,\nand he will rule over you.”\n"
+        },
+        {
+            "book_id": "PSA",
+            "book_name": "Psalms",
+            "chapter": 120,
+            "verse": 2,
+            "text": "Deliver my soul, Yahweh, from lying lips,\nfrom a deceitful tongue.\n"
+        },
+        {
+            "book_id": "HEB",
+            "book_name": "Hebrews",
+            "chapter": 12,
+            "verse": 2,
+            "text": "looking to Jesus, the author and perfecter of faith, who for the joy that was set before him endured the cross, despising its shame, and has sat down at the right hand of the throne of God.\n"
+        }
+    ]
+}
