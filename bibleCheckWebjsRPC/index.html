@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>particles.js</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="css/style.css">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+
+  <Style>
+  
+  .panel {
+    font-family: 'Source Sans Pro';
+    font-size: 1.3em;
+    position: absolute;
+    width: 400px;
+    height: 300;
+    background: #eee;
+    margin-left: 37%;
+    margin-top: 11%;
+    padding: 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.alert{
+    display: none;
+}
+  </Style>
+
+</head>
+<body>
+
+
+<!-- particles.js container -->
+<div id="particles-js">
+
+  <div class="panel" style="display: block;">
+    <input class="input form-control" id="bookName" type="text" placeholder="Book name"/> <br/>
+    <input class="input form-control" id="chapter" type="number" placeholder="Chapter"/> <br/>
+    <input class="input form-control" id="verse" type="number" placeholder="verse"/> <br/>
+    <div class="form-group ">
+      <label for="sel1">Bible Version :</label>
+      <select class="form-control" id="sel1">
+        <option>KJV</option>
+        <option>NIV</option>
+      </select>
+    </div>
+    <textarea class="textarea input form-control" id="verseText" cols="4" rows="3" > </textarea> <br/>
+      
+    <button class="btn primary-btn" id="submit"> Check </button>
+
+    <div>
+      <p id="result_panel"> </p>
+
+      <div id="sucess_alert" class="alert alert-success hide" role="alert">
+        Ya it is correct !!!
+      </div>
+      <div id="danger_alert" class="alert alert-danger hide" role="alert">
+        False, not correct version !
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+
+
+
+<!-- scripts -->
+<script src="./particles.js"></script>
+<script src="js/app.js"></script>
+
+<!-- stats.js -->
+<script src="js/lib/stats.js"></script>
+<script>
+  var count_particles, stats, update;
+  stats = new Stats;
+  stats.setMode(0);
+  stats.domElement.style.position = 'absolute';
+  stats.domElement.style.left = '0px';
+  stats.domElement.style.top = '0px';
+  document.body.appendChild(stats.domElement);
+  count_particles = document.querySelector('.js-count-particles');
+  update = function() {
+    stats.begin();
+    stats.end();
+    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    }
+    requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+
+
+</script>
+
+
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+<script src="./node_modules/web3/dist/web3.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.js"> </script>
+
+<script>
+  if (typeof web3 !== 'undefined') {
+      web3 = new Web3(web3.currentProvider);
+  } else {
+      // set the provider you want from Web3.providers
+      web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/cb9fa4cbacac4c4383bdc9e017647c9e"));
+  }
+
+  web3.eth.defaultAccount = '0x99481474541a94B3592537Fc6054B34CC880C226';
+
+  let bibleContract = web3.eth.contract([
+      {
+          "inputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+      },
+      {
+          "constant": true,
+          "inputs": [
+              {
+                  "name": "book_name",
+                  "type": "string"
+              },
+              {
+                  "name": "chapter",
+                  "type": "uint256"
+              },
+              {
+                  "name": "verse",
+                  "type": "uint256"
+              }
+          ],
+          "name": "getVerse",
+          "outputs": [
+              {
+                  "name": "",
+                  "type": "string"
+              }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+      }
+  ]);
+
+  let bibleContractInstance = bibleContract.at('0xd110e493604dda8d6e3945f0e85c3e7533d9e9b8');
+
+  function call_me() {
+
+      let result__ =  bibleContractInstance.getVerse("Romans", 12, 2);
+
+      console.log(result__);
+  }
+
+
+   $("#submit").click(function() {
+
+    var book_name = $("#bookName").val();
+    var chapter = $("#chapter").val();
+    var verse = $("#verse").val();
+    var verseText = $('#verseText').val().replace(/\s/g, '');
+    
+    var verseTextHash = sha1(verseText);
+    
+    console.log("verse Hash " + verseTextHash);
+
+    var hashResponse = '';
+
+
+
+
+    console.log(book_name, chapter, verse);
+
+
+      bibleContractInstance.getVerse( book_name , chapter, verse, function(error, result){
+        if(!error)
+            {
+                hashResponse = result;
+
+                // console.log( verseTextHash + "==" + hashResponse);
+                console.log(verseTextHash.localeCompare(hashResponse));
+
+                if(! verseTextHash.localeCompare(hashResponse)){
+                  $('#sucess_alert').show();
+                  $('#danger_alert').hide();
+                } else {
+                  $('#danger_alert').show();
+                  $('#sucess_alert').hide();
+                }
+
+            }
+        else {
+            console.error(error);
+        }
+      });
+  });
+
+
+</script>
+
+</body>
+</html>
