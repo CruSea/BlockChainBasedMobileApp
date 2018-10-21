@@ -5,14 +5,14 @@
             "book_name": "John",
             "chapter": 3,
             "verse": 16,
-            "text": "\nFor God so loved the world, that he gave his one and only Son, that whoever believes in him should not perish, but have eternal life.\n\n"
+            "text": "For God so loved the world, that he gave his one and only Son, that whoever believes in him should not perish, but have eternal life."
         },
         {
             "book_id": "ROM",
             "book_name": "Romans",
             "chapter": 12,
             "verse": 1,
-            "text": "Therefore I urge you, brothers, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God, which is your spiritual service.\n"
+            "text": "Therefore I urge you, brothers, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God, which is your service.\n"
         },
         {
             "book_id": "ROM",
@@ -33,7 +33,7 @@
             "book_name": "Psalms",
             "chapter": 120,
             "verse": 2,
-            "text": "Deliver my soul, Yahweh, from lying lips,\nfrom a deceitful tongue.\n"
+            "text": "Deliver my soul, Yahweh, from lying heart,\nfrom a deceitful tongue.\n"
         },
         {
             "book_id": "HEB",
@@ -41,6 +41,20 @@
             "chapter": 12,
             "verse": 2,
             "text": "looking to Jesus, the author and perfecter of faith, who for the joy that was set before him endured the cross, despising its shame, and has sat down at the right hand of the throne of God.\n"
+        },
+        {
+            "book_id": "EXO",
+            "book_name": "Exodus",
+            "chapter": 12,
+            "verse": 2,
+            "text": "“This month shall be to you the beginning of months. It shall be the month of the year to you.\n"
+        },
+        {
+            "book_id": "JOS",
+            "book_name": "Joshua",
+            "chapter": 7,
+            "verse": 11,
+            "text": "Israel has sinned. Yes, they have even transgressed my covenant which I commanded them. Yes, they have even taken some of the devoted things, and have also stolen, and also deceived. They have even put it among their own stuff.\n"
         }
     ]
 }
