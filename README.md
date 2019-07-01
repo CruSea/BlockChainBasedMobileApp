@@ -3,6 +3,7 @@
 ![photo_2018-10-21_15-36-08](https://user-images.githubusercontent.com/19642322/48045735-94ab3580-e1a2-11e8-9708-9fb6a6ae9582.jpg)
 
 
+
 ## Introduction 
 
 Due to the fact that we peoples depend on our smart phones, now days most of us prefer to use the bible applications in our phones than the hard copy. Using bible applications has made our life easy, but on the other side we can not be sure if the version we are using is the original or not altered. 
